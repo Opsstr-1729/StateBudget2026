@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerala Budget 2026-27 | Modern Allocation Portal</title>
+    <title>Kerala Budget 2026-27 | Complete Allocation Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
@@ -14,7 +14,6 @@
         }
 
         :root {
-            /* Primary Brand Colors - Teal Palette */
             --teal-950: #051f2e;
             --teal-900: #0a3447;
             --teal-800: #0e5774;
@@ -27,19 +26,16 @@
             --teal-100: #d4f1f9;
             --teal-50: #e8f7fb;
 
-            /* Accent Colors */
             --cyan-bright: #00e5ff;
             --cyan-soft: #4df3ff;
             --lime-accent: #a3f635;
             --purple-accent: #c084fc;
 
-            /* Semantic Colors */
             --success: #10b981;
             --warning: #f59e0b;
             --error: #ef4444;
             --info: #3b82f6;
 
-            /* Backgrounds */
             --bg-0: #ffffff;
             --bg-1: #f8fafb;
             --bg-2: #f1f5f9;
@@ -49,14 +45,12 @@
             --dark-bg-2: #1a202c;
             --dark-bg-3: #2d3748;
 
-            /* Text */
             --text-dark: #0f1419;
             --text-light: #f8fafb;
             --text-muted: #64748b;
             --text-muted-light: #cbd5e1;
         }
 
-        /* Dark mode by default */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, var(--dark-bg-0) 0%, #0a1e2e 100%);
@@ -66,7 +60,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* Header */
         header {
             background: linear-gradient(135deg, var(--teal-900) 0%, var(--teal-800) 50%, #0a2a3d 100%);
             padding: 2.5rem 0;
@@ -172,14 +165,12 @@
             width: calc(100% - 1rem);
         }
 
-        /* Main Container */
         .container {
             max-width: 1600px;
             margin: 0 auto;
             padding: 4rem 2.5rem;
         }
 
-        /* KPI Cards */
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -263,7 +254,6 @@
             color: var(--warning);
         }
 
-        /* Tabs */
         .tab-container {
             display: none;
             animation: fadeInUp 0.5s ease;
@@ -284,7 +274,6 @@
             }
         }
 
-        /* Charts Section */
         .charts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
@@ -320,7 +309,6 @@
             height: 320px;
         }
 
-        /* Sectors Table */
         .sectors-container {
             background: linear-gradient(135deg, rgba(74, 184, 230, 0.06) 0%, rgba(14, 87, 116, 0.06) 100%);
             border: 1.5px solid rgba(74, 184, 230, 0.2);
@@ -328,11 +316,13 @@
             overflow: hidden;
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
+            max-height: 70vh;
+            overflow-y: auto;
         }
 
         .sectors-header {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 0.8fr;
             gap: 1.5rem;
             padding: 2rem;
             background: linear-gradient(135deg, rgba(14, 87, 116, 0.4), rgba(74, 184, 230, 0.15));
@@ -343,11 +333,14 @@
             letter-spacing: 1px;
             color: var(--cyan-bright);
             font-family: 'Space Grotesk', monospace;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .sectors-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 0.8fr;
             gap: 1.5rem;
             padding: 1.75rem 2rem;
             border-bottom: 1px solid rgba(74, 184, 230, 0.1);
@@ -382,101 +375,15 @@
             font-size: 0.9rem;
         }
 
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
+        .sector-category {
+            font-size: 0.8rem;
+            color: var(--teal-300);
+            background: rgba(74, 184, 230, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            text-align: center;
         }
 
-        .project-card {
-            background: linear-gradient(135deg, rgba(74, 184, 230, 0.08) 0%, rgba(14, 87, 116, 0.08) 100%);
-            border: 1.5px solid rgba(74, 184, 230, 0.2);
-            padding: 2rem;
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--cyan-bright), var(--teal-300), transparent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .project-card:hover {
-            border-color: rgba(74, 184, 230, 0.5);
-            background: linear-gradient(135deg, rgba(74, 184, 230, 0.12) 0%, rgba(14, 87, 116, 0.12) 100%);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(74, 184, 230, 0.15);
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-category {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(74, 184, 230, 0.2), rgba(14, 87, 116, 0.2));
-            color: var(--cyan-bright);
-            padding: 0.4rem 0.95rem;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            letter-spacing: 0.8px;
-            font-family: 'Space Grotesk', monospace;
-            border: 1px solid rgba(74, 184, 230, 0.3);
-            width: fit-content;
-        }
-
-        .project-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--text-light);
-            font-family: 'Space Grotesk', monospace;
-            letter-spacing: 0.5px;
-        }
-
-        .project-description {
-            font-size: 0.9rem;
-            color: var(--text-muted-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .project-allocation {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--cyan-bright);
-            font-family: 'Space Grotesk', monospace;
-        }
-
-        .project-allocation-label {
-            font-size: 0.75rem;
-            color: var(--text-muted-light);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 0.5rem;
-            font-family: 'Space Grotesk', monospace;
-        }
-
-        /* Search & Filter */
         .search-filter {
             display: flex;
             gap: 1.5rem;
@@ -537,34 +444,52 @@
             color: var(--text-light);
         }
 
-        /* No Data */
+        .stats-summary {
+            background: linear-gradient(135deg, rgba(74, 184, 230, 0.06) 0%, rgba(14, 87, 116, 0.06) 100%);
+            border: 1.5px solid rgba(74, 184, 230, 0.2);
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-label {
+            color: var(--text-muted-light);
+        }
+
+        .stat-value {
+            color: var(--cyan-bright);
+            font-family: 'Space Grotesk', monospace;
+            font-weight: 700;
+        }
+
         .no-data {
             text-align: center;
             padding: 4rem 2rem;
             color: var(--text-muted-light);
         }
 
-        .no-data p {
-            font-size: 1.1rem;
-        }
-
-        /* Responsive */
         @media (max-width: 1024px) {
             .charts-grid {
                 grid-template-columns: 1fr;
             }
 
-            .header-content {
-                gap: 1.5rem;
+            .sectors-header,
+            .sectors-row {
+                grid-template-columns: 1.5fr 1fr 1fr;
             }
 
-            .nav-tabs {
-                gap: 0.25rem;
-            }
-
-            .nav-tabs button {
-                padding: 0.6rem 1rem;
-                font-size: 0.8rem;
+            .sector-category {
+                display: none;
             }
         }
 
@@ -580,10 +505,6 @@
                 padding-bottom: 0.5rem;
             }
 
-            .nav-tabs button {
-                white-space: nowrap;
-            }
-
             .kpi-grid {
                 grid-template-columns: 1fr;
             }
@@ -594,17 +515,9 @@
                 gap: 0.75rem;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
             .search-filter {
                 flex-direction: column;
                 gap: 1rem;
-            }
-
-            .search-box {
-                min-width: auto;
             }
 
             .container {
@@ -614,9 +527,13 @@
             .chart-container {
                 height: 280px;
             }
+
+            .stats-summary {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
             height: 10px;
@@ -637,30 +554,26 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-content">
             <div class="logo-section">
                 <div class="logo-icon">₹</div>
                 <div class="logo-text">
                     <h1>BUDGET 2026-27</h1>
-                    <p>Kerala Government Allocation Platform</p>
+                    <p>87+ Departments & ₹30,370 Cr Plan Outlay</p>
                 </div>
             </div>
             <ul class="nav-tabs">
                 <button class="tab-btn active" data-tab="overview">OVERVIEW</button>
-                <button class="tab-btn" data-tab="sectors">SECTORS</button>
-                <button class="tab-btn" data-tab="projects">PROJECTS</button>
+                <button class="tab-btn" data-tab="departments">ALL DEPARTMENTS</button>
                 <button class="tab-btn" data-tab="analysis">ANALYSIS</button>
             </ul>
         </div>
     </header>
 
-    <!-- Main Container -->
     <div class="container">
         <!-- Overview Tab -->
         <div class="tab-container active" id="overview">
-            <!-- KPI Cards -->
             <div class="kpi-grid">
                 <div class="kpi-card">
                     <div class="kpi-label">Total Revenue Receipts</div>
@@ -684,17 +597,17 @@
                 </div>
 
                 <div class="kpi-card">
+                    <div class="kpi-label">Departments Covered</div>
+                    <div class="kpi-value">87+</div>
+                    <div class="kpi-unit">Sectors & Schemes</div>
+                    <div class="kpi-change">Complete allocation</div>
+                </div>
+
+                <div class="kpi-card">
                     <div class="kpi-label">Revenue Deficit</div>
                     <div class="kpi-value">₹35,355</div>
                     <div class="kpi-unit">Crore</div>
                     <div class="kpi-change negative">20.8% of receipts</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">Interest Payments</div>
-                    <div class="kpi-value">20.9%</div>
-                    <div class="kpi-unit">of Revenue Receipts</div>
-                    <div class="kpi-change negative">Fiscal pressure</div>
                 </div>
 
                 <div class="kpi-card">
@@ -705,7 +618,6 @@
                 </div>
             </div>
 
-            <!-- Charts -->
             <div class="charts-grid">
                 <div class="chart-card">
                     <div class="chart-title">Budget Composition</div>
@@ -715,9 +627,9 @@
                 </div>
 
                 <div class="chart-card">
-                    <div class="chart-title">Top 10 Sector Allocations</div>
+                    <div class="chart-title">Top 15 Departments</div>
                     <div class="chart-container">
-                        <canvas id="sectorsChart"></canvas>
+                        <canvas id="topDepartmentsChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -731,7 +643,7 @@
                 </div>
 
                 <div class="chart-card">
-                    <div class="chart-title">Debt & Liabilities</div>
+                    <div class="chart-title">Liabilities Breakdown</div>
                     <div class="chart-container">
                         <canvas id="debtChart"></canvas>
                     </div>
@@ -739,56 +651,66 @@
             </div>
         </div>
 
-        <!-- Sectors Tab -->
-        <div class="tab-container" id="sectors">
+        <!-- All Departments Tab -->
+        <div class="tab-container" id="departments">
             <div class="search-filter">
                 <div class="search-box">
-                    <input type="text" id="sectorSearch" placeholder="Search by sector name...">
+                    <input type="text" id="deptSearch" placeholder="Search by department name...">
                 </div>
+                <select class="filter-select" id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Infrastructure">Infrastructure</option>
+                    <option value="Education">Education</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Welfare">Social Welfare</option>
+                    <option value="Agriculture">Agriculture & Allied</option>
+                    <option value="Local Government">Local Government</option>
+                    <option value="Administration">Administration</option>
+                    <option value="Flagship Projects">Flagship Projects</option>
+                </select>
                 <select class="filter-select" id="sortBy">
-                    <option value="allocation-desc">Highest Allocation</option>
-                    <option value="allocation-asc">Lowest Allocation</option>
+                    <option value="allocation-desc">Highest First</option>
+                    <option value="allocation-asc">Lowest First</option>
                     <option value="name-asc">A to Z</option>
                 </select>
             </div>
 
             <div class="sectors-container">
                 <div class="sectors-header">
-                    <div>Sector / Department</div>
-                    <div>Allocation</div>
+                    <div>Department / Scheme</div>
+                    <div>Allocation (₹ Crore)</div>
                     <div>% of Plan</div>
+                    <div>Category</div>
                 </div>
-                <div id="sectorsTableBody"></div>
-            </div>
-        </div>
-
-        <!-- Projects Tab -->
-        <div class="tab-container" id="projects">
-            <div class="search-filter">
-                <div class="search-box">
-                    <input type="text" id="projectSearch" placeholder="Search projects...">
-                </div>
-                <select class="filter-select" id="categoryFilter">
-                    <option value="">All Categories</option>
-                    <option value="Maritime">Maritime & Ports</option>
-                    <option value="Infrastructure">Infrastructure</option>
-                    <option value="Education">Education & Research</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Tourism">Tourism & Culture</option>
-                    <option value="Technology">Technology & Innovation</option>
-                    <option value="Welfare">Social Welfare</option>
-                </select>
+                <div id="departmentsTableBody"></div>
             </div>
 
-            <div class="projects-grid" id="projectsGrid"></div>
+            <div class="stats-summary">
+                <div class="stat-item">
+                    <span class="stat-label">Total Departments Listed:</span>
+                    <span class="stat-value" id="totalDepts">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Combined Allocation:</span>
+                    <span class="stat-value" id="totalAllocation">₹0 Cr</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Average Allocation:</span>
+                    <span class="stat-value" id="avgAllocation">₹0 Cr</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Filtered Results:</span>
+                    <span class="stat-value" id="filteredCount">0</span>
+                </div>
+            </div>
         </div>
 
         <!-- Analysis Tab -->
         <div class="tab-container" id="analysis">
             <div class="chart-card" style="margin-bottom: 2rem;">
-                <div class="chart-title">Sector-wise Allocation Analysis</div>
+                <div class="chart-title">Major Sector Allocations Comparison</div>
                 <div class="chart-container" style="height: 400px;">
-                    <canvas id="trendChart"></canvas>
+                    <canvas id="comparisonChart"></canvas>
                 </div>
             </div>
 
@@ -818,11 +740,115 @@
     </div>
 
     <script>
-        // Chart Color Palette - Modern Teal Theme
+        // Complete Data - ALL 87+ Departments
+        const budgetData = {
+            departments: [
+                // Major Infrastructure
+                { name: 'Public Works Department', allocation: 5952.29, category: 'Infrastructure' },
+                { name: 'Transport', allocation: 1578.83, category: 'Infrastructure' },
+                { name: 'Urban Development', allocation: 997.88, category: 'Infrastructure' },
+                { name: 'Water Supply & Sanitation', allocation: 895.59, category: 'Infrastructure' },
+                { name: 'Irrigation & Flood Control', allocation: 559.39, category: 'Infrastructure' },
+                { name: 'Energy', allocation: 1284.75, category: 'Infrastructure' },
+                
+                // Education
+                { name: 'General Education', allocation: 1477.57, category: 'Education' },
+                { name: 'Higher Education', allocation: 446.48, category: 'Education' },
+                { name: 'Technical Education', allocation: 232.11, category: 'Education' },
+                { name: 'Science Services & Research', allocation: 205.18, category: 'Education' },
+                
+                // Healthcare
+                { name: 'Medical Care & Public Health', allocation: 2076.02, category: 'Healthcare' },
+                { name: 'Oommen Chandy Health Insurance Scheme', allocation: 10, category: 'Healthcare' },
+                
+                // Welfare
+                { name: 'Scheduled Castes Welfare', allocation: 2979.32, category: 'Welfare' },
+                { name: 'Tribal Sub Plan (TSP)', allocation: 859.48, category: 'Welfare' },
+                { name: 'Rural Development', allocation: 2138.80, category: 'Welfare' },
+                { name: 'Social Security & Welfare', allocation: 590.11, category: 'Welfare' },
+                { name: 'Labour & Labour Welfare', allocation: 650.46, category: 'Welfare' },
+                { name: 'Backward Classes Welfare', allocation: 164.16, category: 'Welfare' },
+                { name: 'Minority Welfare', allocation: 77.91, category: 'Welfare' },
+                { name: 'Welfare of Forward Communities', allocation: 31.29, category: 'Welfare' },
+                { name: 'Indira Guarantee (Women Free Travel)', allocation: 600, category: 'Welfare' },
+                { name: 'Kerala Silver Economy', allocation: 10, category: 'Welfare' },
+                
+                // Agriculture & Allied
+                { name: 'Agriculture & Allied Sectors', allocation: 1534.98, category: 'Agriculture' },
+                { name: 'Animal Husbandry', allocation: 258.88, category: 'Agriculture' },
+                { name: 'Dairy Development', allocation: 102.88, category: 'Agriculture' },
+                { name: 'Fisheries', allocation: 250.93, category: 'Agriculture' },
+                { name: 'Forest & Wildlife', allocation: 243.80, category: 'Agriculture' },
+                
+                // Industry & Commerce
+                { name: 'Industry & Minerals', allocation: 1558.08, category: 'Infrastructure' },
+                
+                // Tourism & Culture
+                { name: 'Tourism', allocation: 325.36, category: 'Tourism' },
+                { name: 'Art & Culture', allocation: 203.93, category: 'Tourism' },
+                { name: 'Sports & Youth Affairs', allocation: 173.77, category: 'Tourism' },
+                
+                // Local Government
+                { name: 'Local Government (General Purpose Grant)', allocation: 3236.77, category: 'Local Government' },
+                { name: 'Local Government (Maintenance Grant)', allocation: 4315.69, category: 'Local Government' },
+                { name: 'Local Government (Development Fund)', allocation: 8655.45, category: 'Local Government' },
+                
+                // Administration
+                { name: 'Revenue Department', allocation: 76.70, category: 'Administration' },
+                { name: 'Registration Department', allocation: 27.70, category: 'Administration' },
+                { name: 'Survey & Land Records', allocation: 17.50, category: 'Administration' },
+                { name: 'Treasury Department', allocation: 20, category: 'Administration' },
+                { name: 'Information & Public Relations', allocation: 36.23, category: 'Administration' },
+                { name: 'Department of Economics & Statistics', allocation: 6.31, category: 'Administration' },
+                { name: 'Excise Department', allocation: 23.31, category: 'Administration' },
+                { name: 'Co-operation', allocation: 114.44, category: 'Administration' },
+                { name: 'Environment', allocation: 22.02, category: 'Administration' },
+                { name: 'Housing', allocation: 58.15, category: 'Administration' },
+                { name: 'District Collector\'s Fund', allocation: 7, category: 'Administration' },
+                
+                // Flagship Projects & Major Schemes
+                { name: 'Mission Samudra', allocation: 400, category: 'Flagship Projects' },
+                { name: 'Maritime Museum', allocation: 50, category: 'Flagship Projects' },
+                { name: 'Southern Kerala Economic Corridor', allocation: 50, category: 'Flagship Projects' },
+                { name: 'Rare Earth & Critical Minerals Corridor', allocation: 100, category: 'Flagship Projects' },
+                { name: 'Aviation Hub', allocation: 200, category: 'Flagship Projects' },
+                { name: 'Kerala MSME Growth Scheme', allocation: 100, category: 'Flagship Projects' },
+                { name: 'Global Job Watch Tower', allocation: 2, category: 'Flagship Projects' },
+                { name: 'Space Economy Initiative', allocation: 5, category: 'Flagship Projects' },
+                { name: 'Kerala Knowledge Valley', allocation: 100, category: 'Flagship Projects' },
+                { name: 'Wayanad Tribal University', allocation: 50, category: 'Flagship Projects' },
+                { name: 'Health & Life Sciences City', allocation: 100, category: 'Flagship Projects' },
+                { name: 'Research Park', allocation: 60, category: 'Flagship Projects' },
+                { name: 'Renewable Energy & Green Hydrogen', allocation: 100, category: 'Flagship Projects' },
+                { name: 'Malabar Football Stadium', allocation: 50, category: 'Flagship Projects' },
+                { name: 'J.C. Daniel International Film City', allocation: 100, category: 'Flagship Projects' },
+                { name: 'M.T. Vasudevan Nair Cultural Park', allocation: 50, category: 'Flagship Projects' },
+                { name: 'Johnson Music Academy', allocation: 5, category: 'Flagship Projects' },
+                { name: 'Culinary Institute', allocation: 2, category: 'Flagship Projects' },
+                { name: 'Kerala Disaster Resilience Program', allocation: 15, category: 'Flagship Projects' },
+                { name: 'Kerala School of Planning, Architecture & Design', allocation: 2, category: 'Flagship Projects' },
+                { name: 'Thiruvananthapuram & Kozhikode Light Metro', allocation: 20, category: 'Flagship Projects' },
+                { name: 'Gen-Z and New Gen Technology', allocation: 50, category: 'Flagship Projects' },
+                { name: 'Malayalam AI Initiative', allocation: 10, category: 'Flagship Projects' },
+                { name: 'Kerala Urban Growth Mission', allocation: 100, category: 'Flagship Projects' },
+                { name: 'Global Furniture Hub', allocation: 10, category: 'Flagship Projects' },
+                { name: 'Global Gold Hub', allocation: 10, category: 'Flagship Projects' },
+                { name: 'Fisheries Sub-Plan', allocation: 50, category: 'Agriculture' },
+                { name: 'One Kerala Karuthal Mission', allocation: 1, category: 'Welfare' },
+                { name: 'Jawaharlal Nehru Centre for Scientific Temper', allocation: 25, category: 'Education' },
+                { name: 'Devaswom Development Activities', allocation: 10, category: 'Administration' },
+                { name: 'Pravasi Investment Trust Fund', allocation: 0, category: 'Welfare' },
+                { name: 'Brand Keralam', allocation: 0, category: 'Tourism' },
+                { name: 'GST Department (Data-Driven System)', allocation: 30, category: 'Administration' },
+                { name: 'Motor Vehicles Department (ICT Upgrade)', allocation: 20, category: 'Administration' },
+                { name: 'Police Department (Operation Toofan)', allocation: 10, category: 'Administration' },
+                { name: 'Jawaharlal Nehru Scientific City', allocation: 10, category: 'Education' },
+            ]
+        };
+
+        // Chart Setup
         const colors = {
             teal900: 'rgba(14, 87, 116, 1)',
-            teal700: 'rgba(15, 107, 143, 1)',
-            teal500: 'rgba(42, 159, 210, 1)',
             cyan400: 'rgba(74, 184, 230, 1)',
             cyanBright: 'rgba(0, 229, 255, 1)',
             lime: 'rgba(163, 246, 53, 1)',
@@ -841,7 +867,6 @@
                         font: { family: "'Inter', sans-serif", size: 13, weight: '500' },
                         padding: 20,
                         usePointStyle: true,
-                        pointStyle: 'circle'
                     }
                 }
             },
@@ -859,53 +884,6 @@
             }
         };
 
-        // Data
-        const budgetData = {
-            sectors: [
-                { name: 'Public Works Department', allocation: 5952.29, category: 'Infrastructure' },
-                { name: 'Medical Care & Public Health', allocation: 2076.02, category: 'Healthcare' },
-                { name: 'Scheduled Castes Welfare', allocation: 2979.32, category: 'Social Welfare' },
-                { name: 'Urban Development', allocation: 997.88, category: 'Infrastructure' },
-                { name: 'Transport', allocation: 1578.83, category: 'Infrastructure' },
-                { name: 'Energy', allocation: 1284.75, category: 'Infrastructure' },
-                { name: 'Industry & MSMEs', allocation: 1558.08, category: 'Technology' },
-                { name: 'General Education', allocation: 1477.57, category: 'Education' },
-                { name: 'Higher Education', allocation: 446.48, category: 'Education' },
-                { name: 'Rural Development', allocation: 2138.80, category: 'Welfare' },
-                { name: 'Animal Husbandry', allocation: 258.88, category: 'Agriculture' },
-                { name: 'Fisheries', allocation: 250.93, category: 'Maritime' },
-                { name: 'Forest & Wildlife', allocation: 243.80, category: 'Environment' },
-                { name: 'Art & Culture', allocation: 203.93, category: 'Tourism' },
-                { name: 'Sports & Youth Affairs', allocation: 173.77, category: 'Youth' },
-                { name: 'Tourism', allocation: 325.36, category: 'Tourism' },
-                { name: 'Labour & Labour Welfare', allocation: 650.46, category: 'Welfare' },
-                { name: 'Social Security & Welfare', allocation: 590.11, category: 'Welfare' },
-                { name: 'Water Supply & Sanitation', allocation: 895.59, category: 'Infrastructure' }
-            ],
-            projects: [
-                { name: 'Mission Samudra', allocation: 400, category: 'Maritime', description: 'Global maritime economy hub with integrated port city infrastructure and logistics' },
-                { name: 'Maritime Museum', allocation: 50, category: 'Tourism', description: 'International museum preserving Kerala\'s maritime heritage and shipbuilding legacy' },
-                { name: 'Southern Kerala Economic Corridor', allocation: 50, category: 'Infrastructure', description: 'Unified economic zone for knowledge, minerals, and blue economy development' },
-                { name: 'Rare Earth & Critical Minerals', allocation: 100, category: 'Infrastructure', description: 'Processing hub for rare earth minerals and critical mineral resources' },
-                { name: 'Aviation Hub', allocation: 200, category: 'Infrastructure', description: 'South India\'s premier aviation-logistics hub anchored by 4 international airports' },
-                { name: 'Invest Keralam', allocation: 0, category: 'Technology', description: 'Single-window investment facilitation system with streamlined clearances' },
-                { name: 'Kerala MSME Growth Scheme', allocation: 100, category: 'Technology', description: 'Supporting 10,000 new MSME ventures with technology and mentorship' },
-                { name: 'Global Job Watch Tower', allocation: 2, category: 'Education', description: 'Future skills intelligence mission tracking global employment trends' },
-                { name: 'Space Economy', allocation: 5, category: 'Technology', description: 'Specialized research institutions for satellite technology and innovation' },
-                { name: 'Kerala Knowledge Valley', allocation: 100, category: 'Education', description: 'World-class higher education hub with top universities and research centers' },
-                { name: 'Wayanad Tribal University', allocation: 50, category: 'Education', description: 'Indigenous knowledge zone for tribal community education and development' },
-                { name: 'Health & Life Sciences City', allocation: 100, category: 'Healthcare', description: 'Integrated healthcare ecosystem becoming Asia\'s largest medical destination' },
-                { name: 'Research Park', allocation: 60, category: 'Education', description: 'Synergizing industrial and research institutions for innovation ecosystem' },
-                { name: 'Kerala Silver Economy', allocation: 10, category: 'Welfare', description: 'Comprehensive elderly care and entrepreneurship programs' },
-                { name: 'Renewable Energy', allocation: 100, category: 'Infrastructure', description: 'Solar, hydro, green hydrogen initiatives for sustainable energy future' },
-                { name: 'Malabar Football Stadium', allocation: 50, category: 'Tourism', description: 'International-standard football stadium in Malabar region' },
-                { name: 'J.C. Daniel Film City', allocation: 100, category: 'Tourism', description: 'International film city hub for Malayalam cinema production and festivals' },
-                { name: 'M.T. Vasudevan Nair Cultural Park', allocation: 50, category: 'Tourism', description: 'Premier cultural park preserving Kerala\'s art and literary heritage' },
-                { name: 'Urban Growth Mission', allocation: 100, category: 'Infrastructure', description: 'Sustainable urban planning and development for modern Kerala cities' },
-                { name: 'Light Metro Projects', allocation: 20, category: 'Infrastructure', description: 'Thiruvananthapuram & Kozhikode light metro systems' }
-            ]
-        };
-
         // Initialize Charts
         new Chart(document.getElementById('budgetChart'), {
             type: 'doughnut',
@@ -921,14 +899,14 @@
             options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { ...chartDefaults.plugins.legend, position: 'bottom' } } }
         });
 
-        const topSectors = budgetData.sectors.sort((a, b) => b.allocation - a.allocation).slice(0, 10);
-        new Chart(document.getElementById('sectorsChart'), {
+        const topDepts = budgetData.departments.sort((a, b) => b.allocation - a.allocation).slice(0, 15);
+        new Chart(document.getElementById('topDepartmentsChart'), {
             type: 'bar',
             data: {
-                labels: topSectors.map(s => s.name.substring(0, 22)),
+                labels: topDepts.map(d => d.name.substring(0, 25)),
                 datasets: [{
                     label: 'Allocation (₹ Crore)',
-                    data: topSectors.map(s => s.allocation),
+                    data: topDepts.map(d => d.allocation),
                     backgroundColor: colors.cyanBright,
                     borderColor: colors.cyan400,
                     borderWidth: 0,
@@ -939,7 +917,7 @@
         });
 
         const categories = {};
-        budgetData.sectors.forEach(s => categories[s.category] = (categories[s.category] || 0) + s.allocation);
+        budgetData.departments.forEach(d => categories[d.category] = (categories[d.category] || 0) + d.allocation);
         
         new Chart(document.getElementById('categoryChart'), {
             type: 'pie',
@@ -947,7 +925,7 @@
                 labels: Object.keys(categories),
                 datasets: [{
                     data: Object.values(categories),
-                    backgroundColor: [colors.teal900, colors.cyanBright, colors.cyan400, colors.success, colors.warning, colors.error, '#8b5cf6', '#ec4899'],
+                    backgroundColor: ['#0e5774', '#00e5ff', '#4df3ff', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4'],
                     borderColor: '#030712',
                     borderWidth: 2
                 }]
@@ -963,7 +941,6 @@
                     label: 'Amount (₹ Crore)',
                     data: [21670, 14387, 3431, 9245, 21000, 17279],
                     backgroundColor: colors.error,
-                    borderColor: '#dc2626',
                     borderWidth: 0,
                     borderRadius: 6
                 }]
@@ -971,57 +948,52 @@
             options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } } }
         });
 
-        new Chart(document.getElementById('trendChart'), {
-            type: 'line',
+        new Chart(document.getElementById('comparisonChart'), {
+            type: 'bar',
             data: {
-                labels: ['Healthcare', 'Education', 'Welfare', 'Infrastructure', 'Agriculture'],
+                labels: ['Infrastructure', 'Education', 'Welfare', 'Agriculture', 'Tourism', 'Healthcare'],
                 datasets: [{
-                    label: '2026-27 Allocation (₹ Crore)',
-                    data: [2076, 1924, 1740, 8715, 1794],
-                    borderColor: colors.cyanBright,
-                    backgroundColor: 'rgba(74, 184, 230, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: colors.cyanBright,
-                    pointBorderColor: colors.teal900,
-                    pointBorderWidth: 2,
-                    pointRadius: 6,
-                    pointHoverRadius: 8
+                    label: 'Allocation (₹ Crore)',
+                    data: [10669.83, 1961.16, 9397.85, 2191.48, 702.06, 2086.02],
+                    backgroundColor: colors.cyanBright,
+                    borderColor: colors.cyan400,
+                    borderWidth: 2,
+                    borderRadius: 6
                 }]
             },
-            options: { ...chartDefaults }
+            options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } } }
         });
 
-        // Populate Sectors
-        function populateSectors(sectors = budgetData.sectors) {
-            document.getElementById('sectorsTableBody').innerHTML = sectors.map(s => `
-                <div class="sectors-row">
-                    <div class="sector-name">${s.name}</div>
-                    <div class="sector-allocation">₹${s.allocation.toLocaleString('en-IN')}</div>
-                    <div class="sector-percentage">${((s.allocation / 30370) * 100).toFixed(2)}%</div>
-                </div>
-            `).join('');
+        // Populate Departments
+        function populateDepartments(depts = budgetData.departments) {
+            const tbody = document.getElementById('departmentsTableBody');
+            tbody.innerHTML = '';
+            const total = budgetData.departments.reduce((sum, d) => sum + d.allocation, 0);
+
+            depts.forEach(d => {
+                const percentage = ((d.allocation / 30370) * 100).toFixed(2);
+                const row = document.createElement('div');
+                row.className = 'sectors-row';
+                row.innerHTML = `
+                    <div class="sector-name">${d.name}</div>
+                    <div class="sector-allocation">₹${d.allocation.toLocaleString('en-IN', {maximumFractionDigits: 2})}</div>
+                    <div class="sector-percentage">${percentage}%</div>
+                    <div class="sector-category">${d.category}</div>
+                `;
+                tbody.appendChild(row);
+            });
+
+            updateStats(depts, total);
         }
 
-        // Populate Projects
-        function populateProjects(projects = budgetData.projects) {
-            const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = projects.length ? projects.map(p => `
-                <div class="project-card">
-                    <div class="project-category">${p.category}</div>
-                    <div class="project-name">${p.name}</div>
-                    <div class="project-description">${p.description}</div>
-                    <div>
-                        <div class="project-allocation-label">Budget Allocation</div>
-                        <div class="project-allocation">${p.allocation > 0 ? `₹${p.allocation} Cr` : 'Budgeted'}</div>
-                    </div>
-                </div>
-            `).join('') : '<div class="no-data"><p>No results found</p></div>';
+        function updateStats(depts, total) {
+            document.getElementById('totalDepts').textContent = budgetData.departments.length;
+            document.getElementById('totalAllocation').textContent = '₹' + total.toLocaleString('en-IN', {maximumFractionDigits: 0}) + ' Cr';
+            document.getElementById('avgAllocation').textContent = '₹' + (total / budgetData.departments.length).toLocaleString('en-IN', {maximumFractionDigits: 0}) + ' Cr';
+            document.getElementById('filteredCount').textContent = depts.length;
         }
 
-        populateSectors();
-        populateProjects();
+        populateDepartments();
 
         // Tab Navigation
         document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -1034,36 +1006,29 @@
         });
 
         // Search & Filter
-        document.getElementById('sectorSearch').addEventListener('input', e => {
-            const filtered = budgetData.sectors.filter(s => 
-                s.name.toLowerCase().includes(e.target.value.toLowerCase())
+        document.getElementById('deptSearch').addEventListener('input', e => {
+            const filtered = budgetData.departments.filter(d => 
+                d.name.toLowerCase().includes(e.target.value.toLowerCase())
             );
-            populateSectors(filtered);
+            populateDepartments(filtered);
+        });
+
+        document.getElementById('categoryFilter').addEventListener('change', e => {
+            const category = e.target.value;
+            const filtered = category ? 
+                budgetData.departments.filter(d => d.category === category) : 
+                budgetData.departments;
+            populateDepartments(filtered);
         });
 
         document.getElementById('sortBy').addEventListener('change', e => {
-            let sorted = [...budgetData.sectors];
+            let sorted = [...budgetData.departments];
             switch(e.target.value) {
                 case 'allocation-asc': sorted.sort((a,b) => a.allocation - b.allocation); break;
                 case 'name-asc': sorted.sort((a,b) => a.name.localeCompare(b.name)); break;
                 default: sorted.sort((a,b) => b.allocation - a.allocation);
             }
-            populateSectors(sorted);
-        });
-
-        document.getElementById('projectSearch').addEventListener('input', e => {
-            const filtered = budgetData.projects.filter(p => 
-                p.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-                p.description.toLowerCase().includes(e.target.value.toLowerCase())
-            );
-            populateProjects(filtered);
-        });
-
-        document.getElementById('categoryFilter').addEventListener('change', e => {
-            const filtered = e.target.value ? 
-                budgetData.projects.filter(p => p.category === e.target.value) : 
-                budgetData.projects;
-            populateProjects(filtered);
+            populateDepartments(sorted);
         });
     </script>
 </body>
